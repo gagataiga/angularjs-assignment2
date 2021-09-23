@@ -1,11 +1,10 @@
 
-(function () {
+(function (module) {
   'use strict';
 
-  let myapp = angular.module("myCheckOffApp", []);
-  myapp.controller("toBuyCtrl", toBuyController)
+  module.controller("toBuyCtrl", toBuyController)
     .controller("alreadyBoughtCtrl", alreadyBoughtController)
-    .service("boughtService", BoughtService);
+    .service("boughtService", ShoppingListCheckOffService);
   
   toBuyController.$inject = ["boughtService"];
   alreadyBoughtController.$inject = ["boughtService"];
@@ -32,7 +31,7 @@
     ];  
 
     toBuy.removeItem = function (itemIndex) { 
-      // BoughtService.removeItem(itemIndex, toBuy.items);
+      // ShoppingListCheckOffService.removeItem(itemIndex, toBuy.items);
       // setItems
       console.log(toBuy.items);
       console.log("index:", itemIndex);
@@ -52,7 +51,7 @@
 
 
   // alredy bought
-  function BoughtService() { 
+  function ShoppingListCheckOffService() { 
     let service = this;
 
     let items = [];
@@ -77,4 +76,4 @@
      
   }
   
-})();
+})(angular.module("myCheckOffApp", []));

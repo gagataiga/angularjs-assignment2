@@ -74,12 +74,11 @@
           <h2>Already Bought:</h2>
           <ul>
             <li ng-repeat="item in already.items">
-              {{$index}}
-              {{item.name}}
+              Bought: {{$index}} {{item.name}}
             </li>
           </ul>
           <!-- ng-ifでエラー時に表示 -->
-          <div ng-hide="already.items.length" class="emptyMessage">Nothing bought yet.</div>
+          <div ng-if="!already.items.length" class="emptyMessage">Nothing bought yet.</div>
         </div>
       </div>
 
